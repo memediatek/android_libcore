@@ -30,6 +30,7 @@ import java.io.FileDescriptor;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.IOException;
+import java.net.cta.CtaAdapter;
 import java.nio.channels.SocketChannel;
 import java.security.AccessController;
 import java.security.PrivilegedExceptionAction;
@@ -607,6 +608,15 @@ class Socket implements java.io.Closeable {
         InetAddress addr = epoint.getAddress ();
         int port = epoint.getPort();
         checkAddress(addr, "connect");
+
+        ///M: Support Mom Check @{
+        synchronized (Socket.class) {
+            if (!CtaAdapter.isSendingPermitted(port)) {
+              System.out.println("Fail to send due to mom user permission");
+              throw new UnknownHostException("User denied by MoM");
+            }
+        }
+        ///@}
 
         SecurityManager security = System.getSecurityManager();
         if (security != null) {

@@ -52,6 +52,7 @@ jint JNI_OnLoad(JavaVM* vm, void*) {
     REGISTER(register_org_apache_harmony_dalvik_NativeTestTarget);
     REGISTER(register_org_apache_harmony_xml_ExpatParser);
     REGISTER(register_sun_misc_Unsafe);
+    REGISTER(register_com_mediatek_libcore_MTKStringFactory);
 #undef REGISTER
 
     JniConstants::Initialize(env);

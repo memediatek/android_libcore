@@ -294,6 +294,7 @@ filegroup {
 filegroup {
     name: "non_openjdk_java_files",
     srcs: [
+        "luni/src/main/java/com/mediatek/libcore/MTKStringFactory.java",
         "luni/src/main/java/java/net/AddressCache.java",
         "luni/src/main/java/libcore/icu/CollationKeyICU.java",
         "luni/src/main/java/libcore/icu/DateTimeFormat.java",
